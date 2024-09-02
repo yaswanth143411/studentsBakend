@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,15 +26,13 @@ public class Student {
     private String adharNo;
     private String photoUrl;
     private LocalDate joiningDate;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Address> addresses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<Address> addresses;
-
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "courseId")
     private Course course;
 
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL ,orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<Bill> bills;
-
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Bill> bills = new ArrayList<>();
 }

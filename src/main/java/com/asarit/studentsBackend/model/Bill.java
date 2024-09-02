@@ -20,8 +20,8 @@ public class Bill {
     private LocalDate paymentDate;
     private Double amount;
 
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
-    @JoinColumn(name ="studentId")
+    @ManyToOne(optional=false, fetch = FetchType.LAZY)
+    @JoinColumn(name ="studentId",nullable = false)
     private Student student;
 
 

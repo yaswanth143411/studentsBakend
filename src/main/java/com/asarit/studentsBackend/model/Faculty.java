@@ -21,7 +21,7 @@ public class Faculty {
     private LocalDate joinDate;
     private LocalDate resignedDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "courseId")
     private Course course;
 }

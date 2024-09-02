@@ -22,7 +22,9 @@ public class Address {
     private String country;
     private Integer pinCode;
 
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
-    @JoinColumn(name = "studentId")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "studentId",nullable = false)
     private Student student;
+
+
 }
